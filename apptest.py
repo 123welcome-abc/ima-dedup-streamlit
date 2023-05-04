@@ -17,7 +17,8 @@ st.set_page_config(
 
 
 #@st.cache(allow_output_mutation=True, show_spinner=False, suppress_st_warning=True)
-@st.cache_resource
+@st.cache_data
+#@st.cache_resource
 def clean_directory(dir):
     for filename in os.listdir(dir):
         filepath = os.path.abspath(os.path.join(dir, filename))
@@ -27,7 +28,8 @@ def clean_directory(dir):
             os.remove(filepath)
 
 #@st.cache(allow_output_mutation=True, show_spinner=False, suppress_st_warning=True)
-@st.cache_resource
+#@st.cache_resource
+@st.cache_data
 def create_dataframe():
     df = pd.DataFrame(columns=['duplicate_images'])
     return df
@@ -44,7 +46,8 @@ def single_duplicate(uploaded_file,duplicates):
 	dedup_shot = os.path.join('output/', 'dedup_shot.jpg')
 	plot_duplicates(image_dir='output/', duplicate_map=duplicates, filename=name, outfile=dedup_shot)
 #@st.cache(allow_output_mutation=True, show_spinner=False, suppress_st_warning=True)
-@st.cache_resource
+#@st.cache_resource
+@st.cache_data
 def zidian(name):
 	image_dir=name
 	_hash = PHash()
@@ -77,7 +80,8 @@ def zidian2():
 	return duplicates
 
 #@st.cache_data(allow_output_mutation=True, show_spinner=False, suppress_st_warning=False)
-@st.cache_resource 
+#@st.cache_resource 
+#@st.cache_data
 class upname:
     def __init__(self, name):
         self.name = name
